@@ -1,0 +1,7 @@
+export async function authMiddleware(req, reply) {
+  const apiEmail = req.headers['email']
+
+  if (!apiEmail) {
+    return reply.code(401).send({ message: 'User is not authenticated.' })
+  }
+}
