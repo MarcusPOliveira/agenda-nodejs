@@ -1,4 +1,5 @@
 import {
+  Contact,
   ContactCreate,
   ContactRepository,
 } from '../interfaces/contact.interface'
@@ -43,6 +44,23 @@ class ContactUseCase {
     const contacts = await this.contactRepository.findAllContacts(user.id)
 
     return contacts
+  }
+
+  async updateContact({ id, name, email, phone }: Contact) {
+    const data = await this.contactRepository.updateContact({
+      id,
+      name,
+      email,
+      phone,
+    })
+
+    return data
+  }
+
+  async deleteContact(id: string) {
+    const data = await this.contactRepository.deleteContact(id)
+
+    return data
   }
 }
 
